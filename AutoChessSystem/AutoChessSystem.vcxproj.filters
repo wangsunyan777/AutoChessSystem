@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="资源文件">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,10 +32,13 @@
     <ClCompile Include="Soldier.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="AI_model.cpp">
+    <ClCompile Include="Text.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="AI_action_converter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_model.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,10 +61,13 @@
     <ClInclude Include="Soldier.h">
       <Filter>源文件</Filter>
     </ClInclude>
-    <ClInclude Include="AI_model.h">
+    <ClInclude Include="Text.h">
       <Filter>源文件</Filter>
     </ClInclude>
     <ClInclude Include="AI_action_converter.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AI_model.h">
       <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,7 +3,7 @@
 using namespace sf;
 Button::Button(const Vector2f& size, 
     const Vector2f& position,
-    const std::string& text, 
+    const std::string& text,int textSize, 
     const Color& normal_color,
     const Color& disabled_color): 
 	GameObject(position, size), 
@@ -20,13 +20,13 @@ Button::Button(const Vector2f& size,
     // font必须设为静态变量，确保字体不会被销毁，从而渲染时不会引发错误，这个BUG改了一上午:(
 	static sf::Font font; 
 
-    if (!font.loadFromFile("Arial.ttf")) {
+    if (!font.loadFromFile("Font/Arial.ttf")) {
         std::cout << "字体加载失败！" << std::endl;
     }
 
     txt.setFont(font);
     txt.setString(text);
-    txt.setCharacterSize(20);
+    txt.setCharacterSize(textSize);
 	txt.setFillColor(Color::Black);
 
     FloatRect textRect = txt.getGlobalBounds();
@@ -75,10 +75,7 @@ bool Button::buttonClicked(const Vector2i& mousePos) {
 	float y2 = y1 + shape.getSize().y;
 	bool isClicked = (mousePos.x >= x1 && mousePos.x <= x2 &&
 		mousePos.y >= y1 && mousePos.y <= y2);
-    if (isClicked) {
-        std::cout << "Clicked" << std::endl; return true;
-    }
-    return false;
+    return isClicked;
 }
 
 void Button::setButtonString(const std::string& str) {

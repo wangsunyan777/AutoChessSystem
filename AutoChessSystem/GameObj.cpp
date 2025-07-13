@@ -1,8 +1,8 @@
 #include "GameObj.h"
 
-// 构造函数，需要给出位置和大小，默认为不可见、无旋转
+// 构造函数，需要给出位置和大小，默认为不可见
 GameObject::GameObject(const sf::Vector2f& pos, const sf::Vector2f& size)
-    : position(pos), size(size), isVisible(false), rotation(0.0f){}
+    : position(pos), size(size), isVisible(false){}
 
 void GameObject::setPosition(const sf::Vector2f& pos) {
     position = pos;
@@ -39,10 +39,3 @@ sf::Vector2f GameObject::getSize() const {
     return size;
 }
 
-void GameObject::setRotation(float angle) {
-    rotation = angle;
-}
-
-void GameObject::rotate(float angle) {
-    rotation += angle;
-}

@@ -1,9 +1,8 @@
 ﻿#include "Soldier.h"
+#include "AI_action_converter.h"
 #include <cmath>
 #include <iostream>
 #include <Windows.h>
-#include "AI_model.h"
-#include "AI_action_converter.h"
 AI_model Soldier::ai;
 bool Soldier::AI_initialized = false;
 
@@ -55,6 +54,54 @@ Soldier::Soldier(bool whichside, int typenum=1, const Vector2f& position = Vecto
 		texture3.loadFromFile("Textures/killer/killer.png");
 		sprite.setTexture(texture3);
 		sprite.setPosition(x * 80-80, y * 80 + 40.0f);
+		float scaleX = 80.0f / 128.0f;  // 目标宽度 / 原始宽度
+		float scaleY = 80.0f / 128.0f;  // 目标高度 / 原始高度
+		sprite.setScale(scaleX, scaleY);
+	}
+
+	if (typenum == 4) { //warrior upgrade
+		isAlive = true;
+		MAXHP = 1200;
+		ATK = 70;
+		MANUVER = 1;
+		RANGE = 1.1f;
+		HP = MAXHP;
+		static Texture texture4;
+		texture4.loadFromFile("Textures/warrior/warrior.png");
+		sprite.setTexture(texture4);
+		sprite.setPosition(x * 80 - 80, y * 80 + 40.0f);
+		float scaleX = 80.0f / 128.0f;  // 目标宽度 / 原始宽度
+		float scaleY = 80.0f / 128.0f;  // 目标高度 / 原始高度
+		sprite.setScale(scaleX, scaleY);
+	}
+
+	if (typenum == 5) { //mage upgrade
+		isAlive = true;
+		MAXHP = 800;
+		ATK = 120;
+		MANUVER = 1;
+		RANGE = 2.1f;
+		HP = MAXHP;
+		static Texture texture5;
+		texture5.loadFromFile("Textures/mage/mage.png");
+		sprite.setTexture(texture5);
+		sprite.setPosition(x * 80 - 80, y * 80 + 40.0f);
+		float scaleX = 80.0f / 128.0f;  // 目标宽度 / 原始宽度
+		float scaleY = 80.0f / 128.0f;  // 目标高度 / 原始高度
+		sprite.setScale(scaleX, scaleY);
+	}
+
+	if (typenum == 6) { //killer upgrade
+		isAlive = true;
+		MAXHP = 900;
+		ATK = 150;
+		MANUVER = 2;
+		RANGE = 1.1f;
+		HP = MAXHP;
+		static Texture texture6;
+		texture6.loadFromFile("Textures/killer/killer.png");
+		sprite.setTexture(texture6);
+		sprite.setPosition(x * 80 - 80, y * 80 + 40.0f);
 		float scaleX = 80.0f / 128.0f;  // 目标宽度 / 原始宽度
 		float scaleY = 80.0f / 128.0f;  // 目标高度 / 原始高度
 		sprite.setScale(scaleX, scaleY);
@@ -129,8 +176,6 @@ void Soldier::render(RenderWindow& window) {
 
 	window.draw(sprite);
 
-	// 血条绘制（略，保持原有代码即可）
-
 	// 渲染后恢复sprite位置，避免多次叠加
 	if (side == true) {
 		sf::FloatRect bounds = sprite.getGlobalBounds();
@@ -180,6 +225,8 @@ int Soldier::getSoldierAtPosition(Soldier** AllSoldiers, int SoldierCount, int x
 	return -1; // 未找到符合要求的士兵
 }
 
+
+
 bool Soldier::initializeAI(const std::string& model_path) {
 	bool success = ai.loadModel(model_path);
 	if (success) {
@@ -200,6 +247,8 @@ void Soldier::setAIDevice(const std::string& device_type) {
 	ai.setDevice(device_type);
 	return;
 }
+
+
 
 void Soldier::battleAI(Soldier** AllSoldiers, int SoldierCount, int selfCount, int turnCount) {
 	std::cout << "Soldier " << selfCount << " BattleAI operating!\n";
@@ -318,7 +367,6 @@ void Soldier::actionInterpreter(int action, Soldier** AllSoldiers, int SoldierCo
 		std::cout << "动作编码错误：" << action << " 不在有效范围内 (0-23)" << std::endl;
 	}
 }
-
 
 
 

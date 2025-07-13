@@ -41,6 +41,7 @@ public:
 	void render(RenderWindow& window); //äÖÈ¾Ê¿±ø
 
 	static AI_model ai;
+	
 	static bool initializeAI(const std::string& model_path);
 	static void setAIDevice(const std::string& device_type);
 	void actionInterpreter(int action,Soldier** AllSoldiers,int SoldierCount,int selfCount);

@@ -7,7 +7,7 @@
 #include "Button.h"
 #include "Item.h"
 #include "Soldier.h"
-
+#include "Text.h"
 using namespace sf;
 
 class Game {
@@ -19,7 +19,10 @@ private:
 
 	int warriorCount; 
 	int mageCount; 
-    int killerCount; //number of soldiers to deploy
+    int killerCount;
+    int warriorCount2;
+    int mageCount2;
+    int killerCount2;//number of soldiers to deploy
 
     int EnemyWarriorCount;
     int EnemyMageCount;
@@ -34,15 +37,29 @@ private:
     Background startBackground;
     Background shopBackground;
     Background battleBackground;
+	Background finalBackground;
+	Background loseBackground;
+    Background infopage;
 
     Button start2shop;
     Button shop2battle;
     Button battle2shop;
     Button shop2start;
+	Button start2info;
+	Button info2start;
 
     Item warriorItem;
     Item mageItem;
 	Item killerItem;
+    Item warriorUpgrade;
+    Item mageUpgrade;
+    Item killerUpgrade; 
+
+	TextObj goldText;
+	TextObj roundText;
+
+    void handleItemClick(const Vector2i& mousePosInt);
+    void updateItems();
 
     bool isDeployingSoldier;
     bool inBattle;
@@ -50,6 +67,16 @@ private:
     Soldier** AllSoldierPtr;
     int currentSoldier; //正在处理的士兵编号
     int turnCount;
+    int round;
+
+    void enterNextRound();
+    void resetSoldierCount();
+    void updateDisc();
+
+    void deployEnemySoldier();
+	void deployPlayerSoldier(const Vector2i& mousePos);
+
+    void createPlayerSoldier();
 
 public:
     Game();
@@ -57,7 +84,7 @@ public:
     void update();
     void runBattle();
     void draw();
-	void deployEnemySoldier();
+	
 };
 
 #endif 

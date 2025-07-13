@@ -10,8 +10,6 @@ protected:
     Vector2f position;    // 位置
     Vector2f size;        // 大小
 
-    float rotation;       // 旋转
-
 public:   
     bool isVisible;       // 可见性
 	// 构造函数，可以设置位置和大小
@@ -32,10 +30,6 @@ public:
     void setSize(const sf::Vector2f& size);
     void setSize(float width, float height);
     Vector2f getSize() const;
-
-    // 旋转控制
-    void setRotation(float angle);
-    void rotate(float angle);
 
     // 虚析构函数
     virtual ~GameObject() = default;

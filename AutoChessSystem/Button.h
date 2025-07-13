@@ -23,7 +23,7 @@ public:
     // ¹¹Ôìº¯Êý
     Button(const Vector2f& size = Vector2f(100.0f, 50.0f),
         const Vector2f& position = Vector2f(0.0f, 0.0f),
-        const std::string& text = "Null Text",
+        const std::string& text = "Null Text",int textSize=20,
         const Color& normalColor = Color::Transparent,
         const Color& disabledColor = Color::Transparent);
 
